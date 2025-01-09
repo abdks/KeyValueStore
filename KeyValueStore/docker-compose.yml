@@ -1,0 +1,22 @@
+﻿version: '3.8'
+services:
+  postgres:
+    image: postgres:15
+    container_name: postgres-db
+    restart: always
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin
+      POSTGRES_DB: keyvaluestore
+    ports:
+      - "5432:5432"  
+  
+  api:
+    build: .
+    container_name: key-value-api
+    ports:
+      - "5000:5000" 
+    depends_on:
+      - postgres
+    environment:
+      - ASPNETCORE_URLS=http://+:5000 

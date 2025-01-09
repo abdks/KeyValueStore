@@ -1,0 +1,5 @@
+@KeyValueStore_HostAddress = http://localhost:5045
+
+GET {{KeyValueStore_HostAddress}}/weatherforecast/
+Accept: application/json
+
